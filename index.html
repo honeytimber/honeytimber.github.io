@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+<head>
+ <title>Honey TimBer</title>
+ <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
 body {
   margin: 0;
   font-family: MyriadPro-Bold, Arial, Helvetica, sans-serif;
 }
 
 
-.hero-image {
-  background-image: url("images/HoneyTimber_600.png");
-  background-color: #cccccc;
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FDAD22;
-}
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
 </style>
-
- <title>Honey TimBer</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-
 </head>
 <body>
+<img src="images/HoneyTimber_600.png" alt="logo"  width=200>
 
-<div class="hero-image">
-  <div class="hero-text">
-    <h1 style="font-size:50px">Imagine what <br> could be done!</h1>
-  </div>
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="images/kitchen.jpg" style="width:70%">
+  <img class="mySlides" src="images/masterensuite.jpg" style="width:70%">
+  <img class="mySlides" src="images/mastershower1.jpg" style="width:70%">
+  <img class="mySlides" src="images/mastershower2.jpg" style="width:70%">
+  <img class="mySlides" src="images/mastershower3.jpg" style="width:70%">
+  <img class="mySlides" src="images/mastershower4.jpg" style="width:70%">
+  <img class="mySlides" src="images/PowderRoom.jpg" style="width:70%">
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 </div>
 
-<!-- <img src="images/HoneyTimber_600.png" alt="logo"  align=center> -->
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+
+
 <ul>
     <li>Tiling of Kitchens and Baths</li>
     <li>ICF installation</li>
