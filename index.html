@@ -1,82 +1,197 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Honey TimBer</title>
- <link rel="icon" type="image/x-icon" href="images/favicon.ico">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <style>
-body {
-  margin: 0;
-  font-family: MyriadPro-Bold, Arial, Helvetica, sans-serif;
+	<meta charset="UTF-8">
+	<title>Honey TimBer</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<style>
+		/* ... previous styles ... */
+
+ body {
+    margin: 0;
+    background-color: #eea11b;
+    font-family: Helvetica, sans-serif;
+  }
+footer {
+	background-color: #fff;
+	padding: 10px;
+	text-align: center;
+	font-size: 12px;
+	color: #999;
+}
+footer p {
+	margin: 0;
+}
+footer a {
+	color: #999;
+	text-decoration: none;
+	font-weight: bold;
+}
+.credit {
+	font-size: 10px;
+	color: #999;
+	text-align: center;
 }
 
+ul {
+			margin: 0 auto;
+			max-width: 600px;
+			padding: 0;
+			list-style-type: none;
+		}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-.mySlides {display:none;}
-</style>
+		ul li {
+			margin-bottom: 10px;
+			padding: 5px;
+			background-color: #fff;
+			border-radius: 5px;
+			text-align: center;
+			font-size: 18px;
+			font-weight: bold;
+		}
+  /* Rest of the CSS styles */
+
+		.carousel {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			height: 60vh;
+			position: relative;
+			padding-bottom: 20px;
+		}
+
+		.carousel img {
+			max-width: 60%;
+			height: auto;
+			object-fit: contain;
+			padding: 10px;
+		}
+
+		.carousel .description {
+			text-align: left;
+			padding: 10px;
+			margin-top: 10px;
+			word-wrap: break-word;
+			max-width: 60%;
+		}
+
+		.carousel-buttons {
+			display: flex;
+			justify-content: center;
+			margin-top: 10px;
+		}
+
+		.carousel-button {
+			margin: 0 5px;
+			padding: 5px 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #000;
+			color: #fff;
+			cursor: pointer;
+			font-weight: bold;
+			font-size: 14px;
+			transition: background-color 0.2s;
+		}
+
+		.carousel-button:hover {
+			background-color: #333;
+		}
+	</style>
 </head>
-<body>
-<img src="images/HoneyTimber_600.png" alt="logo"  width=200>
+<body style="background-color: #eea11b;">
+	<header style="background-color: #fff; display: flex; align-items: center; padding: 10px;">
+		<img id="logo" src="images/HoneyTimber_Header300.gif" alt="Logo" style="width: 200px; margin-right: auto;">
+		<p> Contact: 613-482-4473</p>
+	</header>
 
-<div class="w3-content w3-display-container">
-  <img class="mySlides" src="images/kitchen.jpg" style="width:70%">
-  <img class="mySlides" src="images/masterensuite.jpg" style="width:70%">
-  <img class="mySlides" src="images/mastershower1.jpg" style="width:70%">
-  <img class="mySlides" src="images/mastershower2.jpg" style="width:70%">
-  <img class="mySlides" src="images/mastershower3.jpg" style="width:70%">
-  <img class="mySlides" src="images/mastershower4.jpg" style="width:70%">
-  <img class="mySlides" src="images/PowderRoom.jpg" style="width:70%">
+	<h1 style="text-align: center;">Honey TimBer</h1>
 
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-</div>
+<ul>
+		<li>Bathroom renovations</li>
+		<li>Decks</li>
+		<li>Insulated Concrete Forms (ICF)</li>
+</UL>
+
+	<!-- Gallery Page -->
+	<div class="gallery" style="display: flex; justify-content: center; align-items: center; height: 70vh;">
+		<div class="carousel">
+			<img id="carousel-image" src="images/1.jpg" alt="A photograph of a bathroom floor">
+			<div class="carousel-buttons">
+				<button class="carousel-button" onclick="changeImage(-1)">&lt; Previous</button>
+				<button class="carousel-button" onclick="changeImage(1)">Next &gt;</button>
+			</div>
+			<div class="description" id="carousel-description">
+				
+			</div>
+		</div>
+	</div>
+
+<footer style="text-align: center; padding: 10px; background-color: #fff;">
+	<p>2023</p>
+	<p class="credit">Coded mostly by Open AI's ChatGPT</p>
+</footer>
 
 <script>
-var slideIndex = 1;
-showDivs(slideIndex);
+  // Gallery Carousel
+  var currentImage = 1;
+  var imageCount = 8;
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+  function changeImage(n) {
+    currentImage += n;
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
+    // Wrap around to the first image
+    if (currentImage > imageCount) {
+      currentImage = 1;
+    }
+    // Wrap around to the last image
+    else if (currentImage < 1) {
+      currentImage = imageCount;
+    }
+
+    var imageElement = document.getElementById("carousel-image");
+    var descriptionElement = document.getElementById("carousel-description");
+
+    imageElement.src = "images/" + currentImage + ".jpg";
+
+    // Update description based on the image
+    switch (currentImage) {
+      case 1:
+        descriptionElement.textContent =
+          "A 2nd storey bathroom renovation where a client chose Schluter's DITRA HEAT product. The power was provided by the removal of a baseboard heater. The heating cable is ordered in specific lengths and cannot be cut or stretched. Installation requires a prescribed spacing to effectively warm your feet and is controlled by embedded sensors connected to a programmable thermostat. In this install, you might be able to follow the path of the cable as it starts near the door and finishes beside the soon-to-be-installed soaker tub (beside the pictured vacuum hose).";
+        break;
+      case 2:
+        descriptionElement.textContent =
+          "A kitchen that used DITRA HEAT to make happy feet. Besides holding the heating cable, the orange matt also decouples the tile from the subfloor. Decoupling improves the long term viability of the tile installation since it is not directly connected to a wood product that changes dimensions with humidity levels. The levelling clips provide consistent spacing and ensures tile to tile transitions are smooth. This is a fairly large format tile that required extra care to install.";
+        break;
+      case 3:
+        descriptionElement.textContent =
+          "A master ensuite with DITRA HEAT for happy feet. This was a challenging install since there was a roll-in shower, a closet, and a fairly large format tile. The clip system allowed us to get a nearly perfect result.";
+        break;
+      case 4:
+        descriptionElement.textContent =
+          "This was our most challenging shower install yet. We built a shelf (instead of a niche) to give the homeowner a place to store soap, bottles and scrubs. The shower featured 4 jets, a wand and a rain-hat with Delta thermostatic mixing valve. The valve was placed within reach of the door so that the homeowner could call for warm water without immediately getting splashed with cold water. The walls were waterproofed with Schluter's KERDI membrane and their pipe sealers. Large format tile in this linear installation was definitely a challenge but the results were spectacular.";
+        break;
+      case 5:
+        descriptionElement.textContent =
+          "This is a powder room that used 12mm tall, 20cm by 20cm tiles. DITRA was used to decouple the tile from the subfloor and a tile levelling clip system was used during install to both provide consistent spacing between tiles and to keep tile to tile transitions smooth. ";
+        break;
+      case 6:
+        descriptionElement.textContent =
+          "Here is a deck under construction. The structure used blocks and concrete pads the client already owned. Three beams were created from a double ply of 2x6 treated lumber. These were set inside the perimeter of the frame to remain hidden from sight. The joists are made from 2x8 treated lumber and will be covered along the top edge by a plastic clipping system for the deck boards. This deck will get a composite board and a white aluminum hand-rail to compliment the existing colour scheme of the house.";
+        break;
+      case 7:
+        descriptionElement.textContent =
+          "ICF houses are well insulated and extremely resilient structures. The foam is assembled with a compliment of rebar (specified by structural engineers and related to the the seismic zone and a number of other factors). When ready, concrete with a 19mm aggregate is pumped into the structure. Pictured above you can see a number of steel braces installed on the inner wall. These braces ensure plumb walls and provide installers with the needed scaffolding from which they can safely work. The results are slightly more expensive than traditional methods, but there are a growing list of benefits that builders and home owners should consider.";
+        break;
+      case 8:
+        descriptionElement.textContent =
+          "Besides building a foundation from ICF, some clients choose to build all the way to the roof. This enhances air-tightness and that subsequently improves energy efficiency and reliability. This type of structure is also extremely quiet since the walls are made from at least 6 inches of concrete. If you are looking to build an energy efficient home, we think you should consider ICF for your structure."
+        break;
+    }
+
+    // Add cases for other images as needed
   }
-  x[slideIndex-1].style.display = "block";  
-}
+    changeImage(0);
 </script>
-
-
-
-<ul>
-    <li>Tiling of Kitchens and Baths</li>
-    <li>ICF installation</li>
-</ul>
-<h2>Tiling can include:</h2>
-<ul>
-    <li>Demolition to remove existing flooring or facilities</li>
-    <li>Site preparation</li>
-    <li>Waterproofing and installation of heated floor systems</li>
-    <li>Tiling and grouting</li>
-    <li>Glass, cabinetry and fixture installation</li>
-</ul>
-<h2>ICF installation can include:</h2>
-<ul>
-    <li>Excavation coordination</li>
-    <li>Installation of footings</li>
-    <li>ICF installation</li>
-    <li>Sill plate installation so your site is ready for framers</li>
-</ul>
-<p><br></p>
-<h2>Contact:</h2>
-<p>613-482-4473</p>
-</body>
-</html>
-
